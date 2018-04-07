@@ -3,7 +3,7 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('c7W/6apDMEwyg2Px5x6dR
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '3163eae7704dfcf9894d608ca489bc32']);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->pushMessage('<to>', $textMessageBuilder);
+$response = $bot->pushMessage('U2b93ab733cb923742937b1ddc1afb328', $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 ?>
