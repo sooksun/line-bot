@@ -29,13 +29,13 @@ if($message['type']=='sticker')
 										'stickerId' => '13'
 									)
 							)
-						);
-						
+						);						
 }
 else
 $pesan=str_replace(" ", "%20", $pesan_datang);
-$key = 'YOUR-API-KEY-SIMSIMI'; //API SimSimi
-$url = 'http://sandbox.api.simsimi.com/request.p?key='.$key.'&lc=id&ft=1.0&text='.$pesan;
+$key = '3555ab79-43a2-47bc-b9e2-ba108662a576'; //API SimSimi
+$url = 'http://sandbox.api.simsimi.com/request.p?key='.$key.'&lc=en&ft=1.0&text=hi';
+
 $json_data = file_get_contents($url);
 $url=json_decode($json_data,1);
 $diterima = $url['response'];
@@ -58,18 +58,16 @@ if($url['result'] == 404)
 else
 if($url['result'] != 100)
 	{
-		
-		
 		$balas = array(
-							'UserID' => $profil->userId,
-                                                        'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',					
-										'text' => 'สวัสดีครับ '.$profil->displayName.' มีอะไรให้รับใช้ครับ'						
-									)
-							)
-						);
+			'UserID' => $profil->userId,
+                        'replyToken' => $replyToken,														
+			'messages' => array(
+				array(
+					'type' => 'text',					
+					'text' => 'สวัสดีครับ '.$profil->displayName.' มีอะไรให้รับใช้ครับ'						
+				     )
+					   )
+				);
 				
 	}
 	else{
