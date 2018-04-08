@@ -8,13 +8,12 @@ $access_token = 'c7W/6apDMEwyg2Px5x6dRnT4uvzxBY+ESRIigI57kOY/dvyR0Wbi6SG6jPGJTLv
 
 $channelSecret = '3163eae7704dfcf9894d608ca489bc32';
 
-//$pushID = 'U2b93ab733cb923742937b1ddc1afb328';
 $pushID = 'U2b93ab733cb923742937b1ddc1afb328';
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีค่ะ '.$_POST["name"].' e-mail ของคุณคือ :'.$_POST["email"]);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีค่ะ '.$_POST["name"].'\n e-mail ของคุณคือ :'.$_POST["email"]);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 $imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder($_POST["picture"],$_POST["picture"]);
