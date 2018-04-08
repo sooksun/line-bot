@@ -21,7 +21,10 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 
 
+header("location:javascript://history.go(-1)");
+exit;
 
+?>
 
 
 
