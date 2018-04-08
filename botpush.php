@@ -23,8 +23,8 @@ $locationMessageBuilder = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilde
 $response = $bot->pushMessage($pushID, $locationMessageBuilder);
 
   
-//$stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
-//$response = $bot->pushMessage($pushID, $stickerMessageBuilder);
+$stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
+$response = $bot->pushMessage($pushID, $stickerMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
