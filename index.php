@@ -65,8 +65,34 @@ if($url['result'] != 100)
                                                         'replyToken' => $replyToken,														
 							'messages' => array(
 								array(
-										'type' => 'text',					
-										'text' => 'สวัสดีครับ '.$profil->displayName.' มีอะไรให้รับใช้ครับ'
+										//'type' => 'text',					
+										//'text' => 'สวัสดีครับ '.$profil->displayName.' มีอะไรให้รับใช้ครับ'
+									  	 'type'=> 'template',
+										  'altText'=>  'this is a buttons template',
+										  'template'=> {
+										    'type'=>  'buttons',
+										    'actions'=>  [
+										      {
+											'type'=>  'message',
+											'label'=>  'แนะนำตัวเอง',
+											'text'=> 'Action 1'
+										      },
+										      {
+											'type'=> 'message',
+											'label'=>  'พบผู้ปกครอง',
+											'text'=>  'Action 2'
+										      },
+										      {
+											'type'=>  'message',
+											"label"=>  'พบ ผู้อำนวยการ',
+											"text"=>  'Action 3'
+										      }
+										    ],
+										    'thumbnailImageUrl'=> 'http://www.obec.go.th/sites/obec.go.th/files/document/attachment/34589/logo_obec_color.jpg',
+										    'title'=> 'ระบบการบริหารผลการปฏิบัติงานครู สพฐ',
+										    'text'=> 'ยินดีต้อนรับค่ะ'
+										  }
+									
 									)
 							)
 						);
