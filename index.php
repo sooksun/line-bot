@@ -25,7 +25,7 @@ if($message['type']=='sticker')
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'ยินดีเช่นกันครับ'	
+										'text' => 'ยินดีเช่นกันครับ',	
 										'type' => 'sticker',									
 										'packageId' => '1' ,										
 										'stickerId' => '1'
