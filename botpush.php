@@ -16,9 +16,13 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีค่ะ '.$_POST["name"].'\n e-mail ของคุณคือ :'.$_POST["email"]);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
-$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('http://www.kruupdate.com/administator/myfile/9990386128.jpg','http://www.kruupdate.com/administator/myfile/9990386128.jpg');
-$response = $bot->pushMessage($pushID, $imageMessageBuilder);
+//$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('http://www.kruupdate.com/administator/myfile/9990386128.jpg','http://www.kruupdate.com/administator/myfile/9990386128.jpg');
+//$response = $bot->pushMessage($pushID, $imageMessageBuilder);
 
+$locationMessageBuilder = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder('บ้าน','115/6 แม่สาย','20.438251', '99.918444');
+$response = $bot->pushMessage($pushID, $locationMessageBuilder);
+
+  
 //$stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
 //$response = $bot->pushMessage($pushID, $stickerMessageBuilder);
 
@@ -26,7 +30,7 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 
 
-header("location:javascript://history.go(-1)");
+//header("location:javascript://history.go(-1)");
 exit;
 
 ?>
