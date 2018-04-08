@@ -24,10 +24,8 @@ if($message['type']=='sticker')
                                                         'replyToken' => $replyToken,							
 							'messages' => array(
 								array(
-
-									  "type": "sticker",
-									  "packageId": "1",
-									  "stickerId": "2564"
+									  "type": "text",
+									  "text": "Hello"
 								
 									)
 							)
