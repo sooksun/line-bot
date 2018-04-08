@@ -17,6 +17,9 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีค่ะ '.$_POST["name"].' e-mail ของคุณคือ :'.$_POST["email"]);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
+$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder($_POST["picture"],$_POST["picture"]);
+$response = $bot->pushMessage($pushID, $imageMessageBuilder);
+
 $stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
 $response = $bot->pushMessage($pushID, $stickerMessageBuilder);
 
