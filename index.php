@@ -66,7 +66,7 @@ if($url['result'] != 100)
 							'messages' => array(
 								array(
 										'type' => 'text',					
-										'text' => 'Maaf '.$profil->displayName.' Server Kami Sedang Sibuk Sekarang.'
+										'text' => 'สวัสดีครับ '.$profil->displayName.' มีอะไรให้ช่วบเหลือแจ้งมาเลยครับ.'
 									)
 							)
 						);
