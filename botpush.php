@@ -19,8 +19,8 @@ $response = $bot->pushMessage($pushID, $textMessageBuilder);
 $imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('http://www.kruupdate.com/administator/myfile/9990386128.jpg','http://www.kruupdate.com/administator/myfile/9990386128.jpg');
 $response = $bot->pushMessage($pushID, $imageMessageBuilder);
 
-$stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
-$response = $bot->pushMessage($pushID, $stickerMessageBuilder);
+//$stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
+//$response = $bot->pushMessage($pushID, $stickerMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
