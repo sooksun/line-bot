@@ -36,6 +36,7 @@ $pesan=str_replace(" ", "%20", $pesan_datang);
 $key = '3555ab79-43a2-47bc-b9e2-ba108662a576'; //API SimSimi
 $url = 'http://sandbox.api.simsimi.com/request.p?key='.$key.'&lc=th&ft=1.0&text='.$pesan;
 
+
 $json_data = file_get_contents($url);
 $url=json_decode($json_data,1);
 $diterima = $url['response'];
@@ -49,7 +50,7 @@ if($url['result'] == 404)
 							'messages' => array(
 								array(
 										'type' => 'text',					
-										'text' => 'Mohon Gunakan Bahasa Indonesia Yang Benar :D.'
+										'text' => 'อืม!!!ก้อยังสงสัยอยู่นะ..'
 									)
 							)
 						);
