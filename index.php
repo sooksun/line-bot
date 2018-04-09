@@ -38,7 +38,7 @@ $pesan=str_replace(" ", "%20", $pesan_datang);
 
 
 $key = '0a7f12df-3ed0-4b46-985a-5d8fa72f0a1b'; //API SimSimi
-$url = 'http://api.simsimi.com/request.p?key='.$key.'&lc=th&ft=1.0&text='.$pesan;
+$url = 'http://api.simsimi.com/request.p?key='.$key.'&lc=th&ft=0.0&text='.$pesan;
 
 
 $json_data = file_get_contents($url);
