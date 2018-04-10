@@ -42,10 +42,10 @@ else
 
 $ch = curl_init();                    
 $url = 'http://banpayapraischool.ac.th/answer/find_answer.php';
-$req='ข้าว';
+
 curl_setopt($ch, CURLOPT_URL,$url);
 curl_setopt($ch, CURLOPT_POST, true);  
-curl_setopt($ch, CURLOPT_POSTFIELDS, "req=".$req); 
+curl_setopt($ch, CURLOPT_POSTFIELDS, "req=".$pesan_datang); 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 $diterima = curl_exec ($ch); 
 curl_close ($ch); 
