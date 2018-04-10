@@ -17,11 +17,11 @@ $userId 	= $client->parseEvents()[0]['source']['userId'];
 $replyToken = $client->parseEvents()[0]['replyToken'];
 $message 	= $client->parseEvents()[0]['message'];
 $profil = $client->profil($userId);
-$ans_text = $message['text'];
+$mess_text = $message['text'];
 
 if($message['type']=='sticker')
 {	
-	$balas = array(
+	$callback = array(
 			'UserID' => $profil->userId,	
                         'replyToken' => $replyToken,							
 			'messages' => array(
@@ -34,7 +34,7 @@ if($message['type']=='sticker')
 				);						
 }
 else
-$ask_text=str_replace(" ", "%20", $ans_text);
+$ask_text=str_replace(" ", "%20", $mess_text);
 $key = '0a7f12df-3ed0-4b46-985a-5d8fa72f0a1b'; //API SimSimi
 $url = 'http://api.simsimi.com/request.p?key='.$key.'&lc=th&ft=1.0&text='.$ask_text;
 
@@ -45,7 +45,7 @@ if($message['type']=='text')
 {
 if($url['result'] == 404)
 	{
-		$balas = array(
+		$callback = array(
 							'UserID' => $profil->userId,	
                                                         'replyToken' => $replyToken,													
 							'messages' => array(
@@ -60,7 +60,7 @@ if($url['result'] == 404)
 else
 if($url['result'] != 100)
 	{
-		$balas = array(
+		$callback = array(
 			'UserID' => $profil->userId,
                         'replyToken' => $replyToken,														
 			'messages' => array(
@@ -73,7 +73,7 @@ if($url['result'] != 100)
 				
 	}
 	else{
-		$balas = array(
+		$callback = array(
 							'UserID' => $profil->userId,
                                                         'replyToken' => $replyToken,														
 							'messages' => array(
@@ -87,10 +87,10 @@ if($url['result'] != 100)
 	}
 }
  
-$result =  json_encode($balas);
+$result =  json_encode($callback);
 
 file_put_contents('./reply.json',$result);
 
 
-$client->replyMessage($balas);
+$client->replyMessage($callback);
 ?>
