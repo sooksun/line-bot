@@ -21,7 +21,7 @@ if($message['type']=='sticker')
 {	
 	$balas = array(
 							'UserID' => $profil->userId,	
-                                                        'replyToken' => $replyToken,							
+                            'replyToken' => $replyToken,							
 							'messages' => array(
 								array(
 										'type' => 'sticker',									
@@ -32,38 +32,31 @@ if($message['type']=='sticker')
 						);						
 }
 else
-$pesan=str_replace(" ", "%20", $pesan_datang);
-//$key = '3555ab79-43a2-47bc-b9e2-ba108662a576'; //API SimSimi
-//$url = 'http://sandbox.api.simsimi.com/request.p?key='.$key.'&lc=th&ft=1.0&text='.$pesan;
-$key = '0a7f12df-3ed0-4b46-985a-5d8fa72f0a1b'; //API SimSimi
-$url = 'http://api.simsimi.com/request.p?key='.$key.'&lc=th&ft=1.0&text='.$pesan;
+//$pesan=str_replace(" ", "%20", $pesan_datang);
+//$key = '0a7f12df-3ed0-4b46-985a-5d8fa72f0a1b'; //API SimSimi
+//$url = 'http://api.simsimi.com/request.p?key='.$key.'&lc=th&ft=1.0&text='.$pesan;
 
+//$json_data = file_get_contents($url);
+//$url=json_decode($json_data,1);
+//$diterima = $url['response'];
 
-$json_data = file_get_contents($url);
-$url=json_decode($json_data,1);
-$diterima = $url['response'];
+$ch = curl_init();                    
+$url = 'http://banpayapraischool.ac.th/answer/find_answer.php';
+$req='ข้าว';
+curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt($ch, CURLOPT_POST, true);  
+curl_setopt($ch, CURLOPT_POSTFIELDS, "req=".$req); 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+$diterima = curl_exec ($ch); 
+curl_close ($ch); 
+
 if($message['type']=='text')
 {
-if($url['result'] == 404)
-	{
-		$balas = array(
-							'UserID' => $profil->userId,	
-                                                        'replyToken' => $replyToken,													
-							'messages' => array(
-								array(
-										'type' => 'text',					
-										'text' => 'อืม!!!ก้อยังสงสัยอยู่นะ..'
-									)
-							)
-						);
-				
-	}
-else
-if($url['result'] != 100)
+if($diterima == '')
 	{
 		$balas = array(
 			'UserID' => $profil->userId,
-                        'replyToken' => $replyToken,														
+            'replyToken' => $replyToken,														
 			'messages' => array(
 				array(
 					'type' => 'text',					
@@ -76,7 +69,7 @@ if($url['result'] != 100)
 	else{
 		$balas = array(
 							'UserID' => $profil->userId,
-                                                        'replyToken' => $replyToken,														
+                            'replyToken' => $replyToken,														
 							'messages' => array(
 								array(
 										'type' => 'text',					
