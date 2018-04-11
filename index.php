@@ -86,6 +86,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนครับ';
+    $answer = $arrPostData['messages'][0]['text'];
   }
 }else{
   if($isData >0){
