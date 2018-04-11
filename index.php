@@ -165,15 +165,15 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 	$answer = $arrPostData['messages'][0]['text'];
   }
 		$callback = array(
-							'UserID' => $profil->userId,
-                            'replyToken' => $replyToken,	
-							'messages' => array(
-								array(
-										'type' => 'text',					
-										'text' => ''.$answer.''
-									)
-							)
-						);
+			'UserID' => $profil->userId,
+                        'replyToken' => $replyToken,	
+			'messages' => array(
+				array(
+					'type' => 'text',					
+					'text' => ''.$answer.''
+				     )
+				)
+				);
 }
 //สิ้นสุดตัด
 }
