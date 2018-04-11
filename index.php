@@ -57,7 +57,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    switch (rand(1,6) {
+    switch (rand(1,6)) {
     case 1:
         $arrPostData['messages'][0]['text'] = 'คิดเหมือนกันเลย !';
         break;
