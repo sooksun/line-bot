@@ -57,7 +57,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    switch (rand(1,6)) {
+    switch (rand(1,20)) {
     case 1:
         $arrPostData['messages'][0]['text'] = 'คิดเหมือนกันเลย !';
         break;
@@ -73,8 +73,50 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     case 5:
         $arrPostData['messages'][0]['text'] = 'เออ..แบบว่ายังไม่อยากคุยอะ';
         break;
+   case 6:
+        $arrPostData['messages'][0]['text'] = 'งุงงิงๆๆ';
+        break;
+   case 7:
+        $arrPostData['messages'][0]['text'] = 'ผมจะตั้งใจฟัง';
+        break;
+   case 8:
+        $arrPostData['messages'][0]['text'] = 'ไม่อยากคุยเรื่องส่วนตัว';
+        break;
+  case 9:
+        $arrPostData['messages'][0]['text'] = 'คุณก็น่ารักดีนะ คุยสนุกด้วย';
+        break;
+  case 10:
+        $arrPostData['messages'][0]['text'] = 'พูดถูกใจ';
+        break;
+   case 11:
+        $arrPostData['messages'][0]['text'] = 'ฟินสุดๆ';
+        break;
+    case 12:
+        $arrPostData['messages'][0]['text'] = 'พี่ก็เป็นเหรอ';
+        break;
+      case 13:
+        $arrPostData['messages'][0]['text'] = 'อ๋อ เหมือนเพื่อนเลย';
+        break;
+      case 14:
+        $arrPostData['messages'][0]['text'] = 'ว่าแต่ คุณเป้นหรือเปล่า';
+        break;
+     case 15:
+        $arrPostData['messages'][0]['text'] = 'แบบนี้ตอบ เอาไว้ตอบรวบยอดเลย ละกัน';
+        break;
+     case 16:
+        $arrPostData['messages'][0]['text'] = 'อุ้ยตาย ลืมไป ไรนะ...ะ';
+        break;
+    case 17:
+        $arrPostData['messages'][0]['text'] = 'ก็..คุยสนุก ๆ ไปเรื่อยๆ';
+        break;
+    case 18:
+        $arrPostData['messages'][0]['text'] = 'ใจดีจัง';
+        break;
+    case 19:
+        $arrPostData['messages'][0]['text'] = 'แหล่มเลย !!';
+        break;
     default:
-        $arrPostData['messages'][0]['text'] = 'ก็รู้สึกแปลกๆ นะ เหมือนพูดมั่วๆ';
+        $arrPostData['messages'][0]['text'] = 'เก่งจัง น่ารักสุดๆ';
     }
 
   }
