@@ -57,7 +57,26 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ผมยังไม่เข้าใจคำถามของคุณครับ คุณสามารถสอนผมให้ฉลาดได้เพียงพิมพ์: สอนว่า[คำถาม|คำตอบ]';
+    switch (rand(1,6) {
+    case 1:
+        $arrPostData['messages'][0]['text'] = 'คิดเหมือนกันเลย !';
+        break;
+    case 2:
+        $arrPostData['messages'][0]['text'] = 'น่าสนใจนะ';
+        break;
+    case 3:
+        $arrPostData['messages'][0]['text'] = 'อืม! ...เอไงดี';
+        break;
+    case 4:
+        $arrPostData['messages'][0]['text'] = 'สักครู่';
+        break;
+    case 5:
+        $arrPostData['messages'][0]['text'] = 'เออ..แบบว่ายังไม่อยากคุยอะ';
+        break;
+    default:
+        $arrPostData['messages'][0]['text'] = 'ก็รู้สึกแปลกๆ นะ เหมือนพูดมั่วๆ';
+    }
+
   }
 }
  
