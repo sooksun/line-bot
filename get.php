@@ -14,5 +14,5 @@ if ($response->isSucceeded()) {
 } else {
     error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
 }
-
+   echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 ?>
