@@ -13,7 +13,7 @@ $pushID = 'U2b93ab733cb923742937b1ddc1afb328';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
                             
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีค่ะ '.$_POST["name"].'\n e-mail ของคุณคือ :'.$_POST["email"]);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีค่ะ '.$_POST["name"].' e-mail ของคุณคือ :'.$_POST["email"]);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 //$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('http://www.kruupdate.com/administator/myfile/9990386128.jpg','http://www.kruupdate.com/administator/myfile/9990386128.jpg');
@@ -39,8 +39,8 @@ $response = $bot->pushMessage($pushID, $stickerMessageBuilder);
                                     );
                 
                                
-$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Do you want to contnue ?',$actions);
-$response = $bot->pushMessage($pushID, $confirmTemplateBuilder);
+//$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Do you want to contnue ?',$actions);
+//$response = $bot->pushMessage($pushID, $confirmTemplateBuilder);
 
 //$messageTemplateActionBuilder = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('ลาเบล','เทกซ์');
 //$response = $bot->pushMessage($pushID, $messageTemplateActionBuilder);
