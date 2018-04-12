@@ -12,7 +12,7 @@ $pushID = 'U2b93ab733cb923742937b1ddc1afb328';
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-
+                            
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีค่ะ '.$_POST["name"].'\n e-mail ของคุณคือ :'.$_POST["email"]);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
@@ -22,14 +22,37 @@ $response = $bot->pushMessage($pushID, $textMessageBuilder);
 $locationMessageBuilder = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder('ต่อฟิชชิ่งปาร์ค','115/6 อ.แม่สาย จ.เชียงราย 58000','20.438251', '99.918444');
 $response = $bot->pushMessage($pushID, $locationMessageBuilder);
 
-  
 $stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
 $response = $bot->pushMessage($pushID, $stickerMessageBuilder);
+  
+						$actions = array (
+                                     array (
+                                          "type" => "message",
+                                          "label"=> "Yes",
+                                          "text" => "Yes"
+                                        ),
+                                     array (
+                                          "type" => "message",
+                                          "label"=> "No",
+                                          "text" => "No"
+                                        )
+                                    );
+                
+                               
+$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Do you want to contnue ?',$actions);
+$response = $bot->pushMessage($pushID, $confirmTemplateBuilder);
 
 //$messageTemplateActionBuilder = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('ลาเบล','เทกซ์');
 //$response = $bot->pushMessage($pushID, $messageTemplateActionBuilder);
 
+
+
+
+
+
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+
+
 
 
 
