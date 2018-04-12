@@ -4,7 +4,7 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('c7W/6apDMEwyg2Px5x6dR
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '3163eae7704dfcf9894d608ca489bc32']);
 
 
-    $actions =array( 
+    $actions =array[ 
               array( 
                 "type"=>"message",
                 "label"=> "Yes",
@@ -15,7 +15,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '3163eae7704dfcf9894d6
                 "label"=> "No",
                 "text"=> "No"
                   )
-            );
+            ];
 
 
 
