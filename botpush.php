@@ -25,18 +25,18 @@ $response = $bot->pushMessage($pushID, $locationMessageBuilder);
 $stickerMessageBuilder = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder('1','13');
 $response = $bot->pushMessage($pushID, $stickerMessageBuilder);
   
-						$actions = array (
-                                     array (
-                                          "type" => "message",
-                                          "label"=> "Yes",
-                                          "text" => "Yes"
-                                        ),
-                                     array (
-                                          "type" => "message",
-                                          "label"=> "No",
-                                          "text" => "No"
-                                        )
-                                    );
+			//$actions = array (
+                       //             array (
+                        //                  "type" => "message",
+                         //                 "label"=> "Yes",
+                        //                  "text" => "Yes"
+                        //                ),
+                       //              array (
+                       //                   "type" => "message",
+                       //                   "label"=> "No",
+                       //                   "text" => "No"
+                      //                  )
+                      //              );
                 
                                
 //$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder('Do you want to contnue ?',$actions);
@@ -45,16 +45,7 @@ $response = $bot->pushMessage($pushID, $stickerMessageBuilder);
 //$messageTemplateActionBuilder = new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('ลาเบล','เทกซ์');
 //$response = $bot->pushMessage($pushID, $messageTemplateActionBuilder);
 
-
-
-
-
-
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-
-
-
-
 
 //header("location:javascript://history.go(-1)");
 exit;
