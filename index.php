@@ -23,10 +23,10 @@ $_msg = $arrJson['events'][0]['message']['text'];
 
 
 $userId 	= $client->parseEvents()[0]['source']['userId'];
-$replyToken = $client->parseEvents()[0]['replyToken'];
+$replyToken 	= $client->parseEvents()[0]['replyToken'];
 $message 	= $client->parseEvents()[0]['message'];
-$profil = $client->profil($userId);
-$mess_text = $message['text'];
+$profil 	= $client->profil($userId);
+$mess_text 	= $message['text'];
 
 if($message['type']=='sticker')
 {	
