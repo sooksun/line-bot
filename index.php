@@ -88,6 +88,16 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนครับ';
     $answer = $arrPostData['messages'][0]['text'];
   }
+  		$callback = array(
+			'UserID' => $profil->userId,
+                        'replyToken' => $replyToken,	
+			'messages' => array(
+				array(
+					'type' => 'text',					
+					'text' => ''.$answer.''
+				     )
+				)
+				);
 }else{
   if($isData >0){
    foreach($data as $rec){
@@ -139,10 +149,10 @@ if (strpos($_msg, 'สอนว่า') !== false) {
         $arrPostData['messages'][0]['text'] = 'พี่ก็เป็นเหรอ';
         break;
       case 13:
-        $arrPostData['messages'][0]['text'] = 'อ๋อ เหมือนเพื่อนเลย';
+        $arrPostData['messages'][0]['text'] = '55555..';
         break;
       case 14:
-        $arrPostData['messages'][0]['text'] = 'ว่าแต่ คุณเป้นหรือเปล่า';
+        $arrPostData['messages'][0]['text'] = 'ว่าแต่ คุณเป็นหรือเปล่า';
         break;
      case 15:
         $arrPostData['messages'][0]['text'] = 'แบบนี้ตอบ เอาไว้ตอบรวบยอดเลย ละกัน';
@@ -179,9 +189,6 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 }
  
 $result =  json_encode($callback);
-
 file_put_contents('./reply.json',$result);
-
-
 $client->replyMessage($callback);
 ?>
