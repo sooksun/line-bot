@@ -179,8 +179,9 @@ if (strpos($_msg, 'สอนว่า') !== false) {
                         'replyToken' => $replyToken,	
 			'messages' => array(
 				array(
-					'type' => 'text',					
-					'text' => $answer."ตามที่คุณ ".$profil->displayName."\n"."UserId = ".$profil->userId."พูดว่า".$_msg." \n เวลา :".date('Y-m-d H:i:s')
+					'type' => 'text',	
+					'text' => "INSERT INTO linebot (user_id, user_name, messages) VALUES (".$profil->userId.",'".$profil->displayName."','".$_msg."')"
+					
 				     )
 				)
 				);
