@@ -176,13 +176,14 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     }
 	$answer = $arrPostData['messages'][0]['text'];
   }
+		date_default_timezone_set("Asia/Bangkok");
 		$callback = array(
 			'UserID' => $profil->userId,
                         'replyToken' => $replyToken,	
 			'messages' => array(
 				array(
 					'type' => 'text',					
-					'text' => $answer." คุณ ".$profil->displayName."\n"."UserId = ".$profil->userId
+					'text' => $answer."ตามที่คุณ ".$profil->displayName."\n"."UserId = ".$profil->userId."พูดว่า".$_msg." \n เวลา :".date('Y-m-d H:i:s')
 				     )
 				)
 				);
