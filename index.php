@@ -8,10 +8,22 @@ Modified by Sooksun Sonnual
 */
 require_once('line_class.php');
 
+
+
 $channelAccessToken = 'c7W/6apDMEwyg2Px5x6dRnT4uvzxBY+ESRIigI57kOY/dvyR0Wbi6SG6jPGJTLvTt35PlSuoBuBjeDvSbJCWAfcpiz1ErocHOOO25kNVOQcDdT9yW1aWTG73cm/tuzqWKv//M1kBOS1lRW6UYVIY8gdB04t89/1O/w1cDnyilFU='; //Your Channel Access Token
 $channelSecret = '3163eae7704dfcf9894d608ca489bc32';//Your Channel Secret
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
+
+
+$res = $client->getProfile('user-id');
+if ($res->isSucceeded()) {
+    $profile = $res->getJSONDecodedBody();
+    $displayName = $profile['displayName'];
+    $statusMessage = $profile['statusMessage'];
+    $pictureUrl = $profile['pictureUrl'];
+}
+
 
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
@@ -172,7 +184,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     default:
         $arrPostData['messages'][0]['text'] = 'เก่งจัง น่ารักสุดๆ';
     }
-	$answer = $arrPostData['messages'][0]['text'];
+	$answer = 'สวัสดี '.$displayName.$arrPostData['messages'][0]['text'];
   }
 		$callback = array(
 			'UserID' => $profil->userId,
