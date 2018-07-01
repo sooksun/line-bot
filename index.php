@@ -7,9 +7,6 @@ Modified by Sooksun Sonnual
 2018
 */
 require_once('line_class.php');
-
-
-
 $channelAccessToken = 'c7W/6apDMEwyg2Px5x6dRnT4uvzxBY+ESRIigI57kOY/dvyR0Wbi6SG6jPGJTLvTt35PlSuoBuBjeDvSbJCWAfcpiz1ErocHOOO25kNVOQcDdT9yW1aWTG73cm/tuzqWKv//M1kBOS1lRW6UYVIY8gdB04t89/1O/w1cDnyilFU='; //Your Channel Access Token
 $channelSecret = '3163eae7704dfcf9894d608ca489bc32';//Your Channel Secret
 
@@ -190,7 +187,24 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 }
 //สิ้นสุดตัด
 }
- 
+$servername = "localhost";
+$username = "banpayap_bot";
+$password = "l6-lyo9N";
+$dbname = "banpayap_bot";
+
+// Create connection
+
+$bdd = new mysqli($servername, $username, $password, $dbname);
+$bdd->query("SET NAMES UTF8");
+if ($bdd->connect_error) {
+    die("Connection failed: " . $bdd->connect_error);
+}
+//save to table line-bot;
+				$sql= "INSERT INTO line-bot (user_id, user_name, messages) VALUES ('".$profil->userId.",'".$profil->displayName.",".$_msg."')";
+				if ($bdd->query($sql) === TRUE) {
+					$res="OK";
+				} 
+
 $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
