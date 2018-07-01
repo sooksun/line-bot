@@ -195,6 +195,6 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".(ereg_replace('[[:space:]]+', '', trim($_msg)))."&user_id=".$userId."&usernames="(ereg_replace('[[:space:]]+', '', trim("นายสุขสันต์ สอนนวล"))));
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&usernames=นายสุขสันต์สอนนวล");
 
 ?>
