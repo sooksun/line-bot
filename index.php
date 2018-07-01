@@ -24,6 +24,13 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$channelAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
 
+$res = $client->getProfile('user-id');
+if ($res->isSucceeded()) {
+	$profile = $res->getJSONDecodedBody();
+	$displayName = $profile['displayName'];
+	$statusMessage = $profile['statusMessage'];
+	$pictureUrl = $profile['pictureUrl'];
+}
 
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $replyToken 	= $client->parseEvents()[0]['replyToken'];
