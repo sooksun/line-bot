@@ -186,7 +186,8 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 				     )
 				)
 				);
-		//$name = $profil->displayName;
+		$strname = $profil->displayName;
+		$username = ereg_replace('[[:space:]]+', '', trim($strname));
 }
 //สิ้นสุดตัด     $callback['messages'][0]['text']
 }
@@ -194,6 +195,6 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&username=นายสุขสันต์สอนนวล");
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&username=".$username);
 
 ?>
