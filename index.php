@@ -16,15 +16,6 @@ $channelSecret = '3163eae7704dfcf9894d608ca489bc32';//Your Channel Secret
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
 
-$res = $client->getProfile('user-id');
-if ($res->isSucceeded()) {
-    $profile = $res->getJSONDecodedBody();
-    $displayName = $profile['displayName'];
-    $statusMessage = $profile['statusMessage'];
-    $pictureUrl = $profile['pictureUrl'];
-}
-
-
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
 $strUrl = "https://api.line.me/v2/bot/message/reply";
@@ -184,7 +175,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     default:
         $arrPostData['messages'][0]['text'] = 'เก่งจัง น่ารักสุดๆ';
     }
-	$answer = 'สวัสดี '.$displayName.$arrPostData['messages'][0]['text'];
+	$answer = $arrPostData['messages'][0]['text'];
   }
 		$callback = array(
 			'UserID' => $profil->userId,
