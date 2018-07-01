@@ -191,6 +191,6 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
-header('Location: http://banpayapraischool.ac.th/cron/ins_linebot.php");
+//header('Location: http://banpayapraischool.ac.th/cron/ins_linebot.php");
 
 ?>
