@@ -191,23 +191,6 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
+header('Location: http://banpayapraischool.ac.th/cron/ins_linebot.php");
 
-$servername = "localhost";
-$username = "banpayap_bot";
-$password = "l6-lyo9N";
-$dbname = "banpayap_bot";
-
-// Create connection
-
-$bdd = new mysqli($servername, $username, $password, $dbname);
-$bdd->query("SET NAMES UTF8");
-if ($bdd->connect_error) {
-    die("Connection failed: " . $bdd->connect_error);
-}
-//save to table line-bot;
-//$sql= "INSERT INTO linebot (user_id, user_name, messages) VALUES ('".$profil->userId."','".$profil->displayName."','".$_msg."')";
-$sql= "INSERT INTO linebot (user_id, user_name, messages) VALUES ('U2b93ab733cb923742937b1ddc1afb328','นายสุขสันต์ สอนนวล','พูดเรื่อยเปื่อย')";
-if ($bdd->query($sql) === TRUE) {
-	$res="OK";
-} 
 ?>
