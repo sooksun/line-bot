@@ -186,8 +186,8 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 				     )
 				)
 				);
-		$strname = $profil->displayName;
-		$username = ereg_replace('[[:space:]]+', '', trim($strname));
+		//$strname = ;
+		//$username = ereg_replace('[[:space:]]+', '', trim($profil->displayName));
 }
 //สิ้นสุดตัด     $callback['messages'][0]['text']
 }
@@ -195,6 +195,6 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&username=".$username);
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&username=".ereg_replace('[[:space:]]+', '', trim($profil->displayName)));
 
 ?>
