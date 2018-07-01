@@ -191,8 +191,8 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
-
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php");
 //file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
-include ("http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
+//include ("http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
 //header( "Location: http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
 ?>
