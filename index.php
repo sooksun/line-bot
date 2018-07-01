@@ -187,6 +187,10 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 }
 //สิ้นสุดตัด
 }
+$result =  json_encode($callback);
+file_put_contents('./reply.json',$result);
+$client->replyMessage($callback);
+
 $servername = "localhost";
 $username = "banpayap_bot";
 $password = "l6-lyo9N";
@@ -200,12 +204,8 @@ if ($bdd->connect_error) {
     die("Connection failed: " . $bdd->connect_error);
 }
 //save to table line-bot;
-				$sql= "INSERT INTO line-bot (user_id, user_name, messages) VALUES ('".$profil->userId.",'".$profil->displayName.",".$_msg."')";
-				if ($bdd->query($sql) === TRUE) {
-					$res="OK";
-				} 
-
-$result =  json_encode($callback);
-file_put_contents('./reply.json',$result);
-$client->replyMessage($callback);
+$sql= "INSERT INTO line-bot (user_id, user_name, messages) VALUES ('".$profil->userId.",'".$profil->displayName.",".$_msg."')";
+if ($bdd->query($sql) === TRUE) {
+	$res="OK";
+} 
 ?>
