@@ -182,7 +182,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 			'messages' => array(
 				array(
 					'type' => 'text',					
-					'text' => ''.$answer.''
+					'text' => 'userId ='.$profil->userId.''.$answer.''
 				     )
 				)
 				);
