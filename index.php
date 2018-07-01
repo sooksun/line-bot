@@ -194,6 +194,6 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&username=นายสุขสันต์ สอนนวล");
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&username=นายสุขสันต์สอนนวล");
 
 ?>
