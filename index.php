@@ -21,6 +21,7 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$channelAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
 
+$displayName 	= $client->parseEvents()[0]['source']['displayName'];
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $replyToken 	= $client->parseEvents()[0]['replyToken'];
 $message 	= $client->parseEvents()[0]['message'];
@@ -191,7 +192,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&name=".$profil->displayName);
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&name=".$displayName);
 //file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
 //include ("http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
 //header( "Location: http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
