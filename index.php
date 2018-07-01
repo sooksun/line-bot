@@ -182,7 +182,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 			'messages' => array(
 				array(
 					'type' => 'text',					
-					'text' => "สวัสดีครับคุณ ".$profil->displayName."\n userId :".$profil->userId."\n".$answer
+					'text' => $answer." คุณ ".$profil->displayName."\n"."UserId = ".$profil->userId
 				     )
 				)
 				);
