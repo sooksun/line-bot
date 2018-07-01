@@ -23,13 +23,11 @@ $_msg = $arrJson['events'][0]['message']['text'];
 
 
 $userId 	= $client->parseEvents()[0]['source']['userId'];
-$groupId  = $client->parseEvents()[0]['source']['groupId']; //new
+$groupId 	= $client->parseEvents()[0]['source']['groupId']; //new
 $replyToken 	= $client->parseEvents()[0]['replyToken'];
 $message 	= $client->parseEvents()[0]['message'];
 $profil 	= $client->profil($userId);
 $mess_text 	= $message['text'];
-$userName = ereg_replace('[[:space:]]+', '_', trim($profil->displayName)); //new
-$msgText = ereg_replace('[[:space:]]+', '_', trim($_msg)); //new
 
 if($message['type']=='sticker')
 {	
@@ -185,11 +183,12 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => $profil->displayName.' groupId'.$groupId.' userId'.$userId
+					'text' => $profil->displayName.'groupId'.$groupId
 				     )
 				)
 				);
-
+		//$strname = ;
+		//$username = ereg_replace('[[:space:]]+', '', trim($profil->displayName));
 }
 //สิ้นสุดตัด     $callback['messages'][0]['text']
 }
@@ -197,6 +196,5 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?usernames=".$userName."&msg=".$msgText."&user_id=".$userId);
-
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&usernames=นายสุขสันต์สอนนวล");
 ?>
