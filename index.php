@@ -182,18 +182,17 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => "INSERT INTO linebot (user_id, user_name, messages) VALUES ('".$profil->userId."','".$profil->displayName."','".$_msg."')"
-					
+					'text' => $profil->displayName
 				     )
 				)
 				);
 }
-//สิ้นสุดตัด
+//สิ้นสุดตัด     $callback['messages'][0]['text']
 }
 $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId);
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."name=".$callback['messages'][0]['text']);
 //file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
 //include ("http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
 //header( "Location: http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=".$profil->userId."&name=".$profil->displayName."&msg=".$_msg);
