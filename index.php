@@ -21,13 +21,13 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$channelAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
 
-$displayName 	= $client->parseEvents()[0]['source']['displayName'];
+
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $replyToken 	= $client->parseEvents()[0]['replyToken'];
 $message 	= $client->parseEvents()[0]['message'];
 $profil 	= $client->profil($userId);
 $mess_text 	= $message['text'];
-
+$displayName 	= $profil->displayName;
 if($message['type']=='sticker')
 {	
 	$callback = array(
@@ -173,6 +173,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
         $arrPostData['messages'][0]['text'] = 'เก่งจัง น่ารักสุดๆ';
     }
 	$answer = $arrPostData['messages'][0]['text'];
+	
   }
 		date_default_timezone_set("Asia/Bangkok");
 		$callback = array(
