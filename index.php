@@ -192,7 +192,7 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-
-$json1 = file_get_contents('http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id='.$profil->userId.'&name='.$profil->displayName.'&msg='.$_msg);
+//$json1 = file_get_contents('http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id='.$profil->userId.'&name='.$profil->displayName.'&msg='.$_msg);
+$json1 = file_get_contents('http://banpayapraischool.ac.th/cron/ins_linebot.php?user_id=U123456&name=นายสุขสันต์ สอนนวล&msg=สอนหนังสือ');
 $data1 = json_decode($json1);
 ?>
