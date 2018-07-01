@@ -204,7 +204,7 @@ if ($bdd->connect_error) {
     die("Connection failed: " . $bdd->connect_error);
 }
 //save to table line-bot;
-$sql= "INSERT INTO line-bot (user_id, user_name, messages) VALUES ('".$profil->userId.",'".$profil->displayName.",".$_msg."')";
+$sql= "INSERT INTO line-bot (user_id, user_name, messages) VALUES (1,'".$profil->userId.",'".$profil->displayName.",".$_msg."')";
 if ($bdd->query($sql) === TRUE) {
 	$res="OK";
 } 
