@@ -20,7 +20,7 @@ $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$channelAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
-$msg = ereg_replace('[[:space:]]+', '',trim($_msg));
+$msg =trim($_msg);
 
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $groupId 	= $client->parseEvents()[0]['source']['groupId']; //new
