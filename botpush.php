@@ -6,7 +6,7 @@ $channelSecret = '3163eae7704dfcf9894d608ca489bc32';
 $pushID = $_GET["groupid"]; //"C284df1adfe47a5ba29b9ac11507b77df";  ///'U2b93ab733cb923742937b1ddc1afb328';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("<html>เรียนคณะครูโรงเรียน ".$_GET["name"]."\n วันนี้มีข่าวสารดังนี้ค่ะ".$_GET["msg"]."</html>");
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("เรียนคณะครูโรงเรียน ".$_GET["name"]."\n วันนี้มีข่าวสารดังนี้ค่ะ".$_GET["msg"]);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 exit;
