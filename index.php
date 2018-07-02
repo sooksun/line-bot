@@ -183,7 +183,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => $profil->displayName.'groupId'.$groupId
+					'text' => $profil->displayName."\nuserId='.$userId."\ngroupId".$groupId
 				     )
 				)
 				);
@@ -196,5 +196,5 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&usernames=นายสุขสันต์สอนนวล");
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&groupId".$groupId);
 ?>
