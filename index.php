@@ -20,7 +20,7 @@ $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$channelAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
-
+$msg = ereg_replace('[[:space:]]+', '',trim($_msg));
 
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $groupId 	= $client->parseEvents()[0]['source']['groupId']; //new
@@ -196,5 +196,5 @@ $result =  json_encode($callback);
 file_put_contents('./reply.json',$result);
 $client->replyMessage($callback);
 
-file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$_msg."&user_id=".$userId."&groupId=".$groupId);
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$msg."&user_id=".$userId."&groupId=".$groupId);
 ?>
