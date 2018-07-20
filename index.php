@@ -183,7 +183,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => $profil->displayName."\nuserId= ".$userId."\ngroupId= ".$groupId."\nmsg= ".$_msg				     )
+					'text' => $profil->displayName."\nuserId= ".$userId."\ngroupId= ".$groupId."\nmsg= ".$mess_text				     )
 				)
 				);
 		//$strname = ;
