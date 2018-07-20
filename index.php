@@ -56,8 +56,8 @@ if($message['type']=='text')
 {
 //เริ่มตัด
 $api_key="xC7mzpTf6-RWaaCVPjDwYxa3rwAtpvc-";
-$url = 'https://api.mlab.com/api/1/databases/tokapi/collections/autoanswer?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/tokapi/collections/autoanswer?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
+$url = 'https://api.mlab.com/api/1/databases/tokapi/collections/conversation?apiKey='.$api_key.'';
+$json = file_get_contents('https://api.mlab.com/api/1/databases/tokapi/collections/conversation?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
  
