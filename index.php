@@ -56,8 +56,8 @@ if($message['type']=='text')
 {
 //เริ่มตัด
 $api_key="xC7mzpTf6-RWaaCVPjDwYxa3rwAtpvc-";
-$url = 'https://api.mlab.com/api/1/databases/tokapi/collections/conversation?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/tokapi/collections/conversation?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
+$url = 'https://api.mlab.com/api/1/databases/tokapi/collections/autoanswer?apiKey='.$api_key.'';
+$json = file_get_contents('https://api.mlab.com/api/1/databases/tokapi/collections/autoanswer?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
  
@@ -179,11 +179,12 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 		date_default_timezone_set("Asia/Bangkok");
 		$callback = array(
 			'UserID' => $profil->userId,
-                        'replyToken' => $replyToken,	=".
+                        'replyToken' => $replyToken,	
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => $profil->displayName."\nuserId= ".$userId."\ngroupId= ".$groupId."\nmsg= ".$mess_text				     )
+					'text' => $profil->displayName."\nuserId=".$userId."\ngroupId".$groupId
+				     )
 				)
 				);
 		//$strname = ;
