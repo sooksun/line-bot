@@ -61,12 +61,8 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/tokapi/collectio
 $data = json_decode($json);
 $isData=sizeof($data);
  
-if (strpos($_msg, 'สอนว่า') !== false) {
-  if (strpos($_msg, 'สอนว่า') !== false) {
-    $x_tra = str_replace("สอนว่า","", $_msg);
-    $pieces = explode("|", $x_tra);
-    $_question=str_replace("[","",$pieces[0]);
-    $_answer=str_replace("]","",$pieces[1]);
+    $_question=$userId;
+    $_answer=$_msg;
     //Post New Data
     $newData = json_encode(
       array(
@@ -88,7 +84,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนครับ';
     $answer = $arrPostData['messages'][0]['text'];
-  }
+
   		$callback = array(
 			'UserID' => $profil->userId,
                         'replyToken' => $replyToken,	
@@ -99,83 +95,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 				     )
 				)
 				);
-}else{
-  if($isData >0){
-   foreach($data as $rec){
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $rec->answer;
-	$answer = $rec->answer;
-   }
-  }else{
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    switch (rand(1,20)) {
-    case 1:
-        $arrPostData['messages'][0]['text'] = 'คิดเหมือนกันเลย !';
-        break;
-    case 2:
-        $arrPostData['messages'][0]['text'] = 'น่าสนใจนะ';
-        break;
-    case 3:
-        $arrPostData['messages'][0]['text'] = 'อืม! ...เอไงดี';
-        break;
-    case 4:
-        $arrPostData['messages'][0]['text'] = 'สักครู่';
-        break;
-    case 5:
-        $arrPostData['messages'][0]['text'] = 'เออ..แบบว่ายังไม่อยากคุยอะ';
-        break;
-   case 6:
-        $arrPostData['messages'][0]['text'] = 'งุงงิงๆๆ';
-        break;
-   case 7:
-        $arrPostData['messages'][0]['text'] = 'ผมจะตั้งใจฟัง';
-        break;
-   case 8:
-        $arrPostData['messages'][0]['text'] = 'ไม่อยากคุยเรื่องส่วนตัว';
-        break;
-  case 9:
-        $arrPostData['messages'][0]['text'] = 'คุณก็น่ารักดีนะ คุยสนุกด้วย';
-        break;
-  case 10:
-        $arrPostData['messages'][0]['text'] = 'พูดถูกใจ';
-        break;
-   case 11:
-        $arrPostData['messages'][0]['text'] = 'ฟินสุดๆ';
-        break;
-    case 12:
-        $arrPostData['messages'][0]['text'] = 'พี่ก็เป็นเหรอ';
-        break;
-      case 13:
-        $arrPostData['messages'][0]['text'] = '55555..';
-        break;
-      case 14:
-        $arrPostData['messages'][0]['text'] = 'ว่าแต่ คุณเป็นหรือเปล่า';
-        break;
-     case 15:
-        $arrPostData['messages'][0]['text'] = 'แบบนี้ตอบ เอาไว้ตอบรวบยอดเลย ละกัน';
-        break;
-     case 16:
-        $arrPostData['messages'][0]['text'] = 'อุ้ยตาย ลืมไป ไรนะ...ะ';
-        break;
-    case 17:
-        $arrPostData['messages'][0]['text'] = 'ก็..คุยสนุก ๆ ไปเรื่อยๆ';
-        break;
-    case 18:
-        $arrPostData['messages'][0]['text'] = 'ใจดีจัง';
-        break;
-    case 19:
-        $arrPostData['messages'][0]['text'] = 'แหล่มเลย !!';
-        break;
-    default:
-        $arrPostData['messages'][0]['text'] = 'เก่งจัง น่ารักสุดๆ';
-    }
-	$answer = $arrPostData['messages'][0]['text'];
-	
-  }
+
 		date_default_timezone_set("Asia/Bangkok");
 		$callback = array(
 			'UserID' => $profil->userId,
@@ -189,7 +109,7 @@ if (strpos($_msg, 'สอนว่า') !== false) {
 				);
 		//$strname = ;
 		//$username = ereg_replace('[[:space:]]+', '', trim($profil->displayName));
-}
+
 //สิ้นสุดตัด     $callback['messages'][0]['text']
 }
 $result =  json_encode($callback);
