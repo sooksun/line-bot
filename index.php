@@ -74,24 +74,8 @@ $isData=sizeof($data);
     );
     $context = stream_context_create($opts);
     $returnValue = file_get_contents($url,false,$context);
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนครับ';
-    $answer = $arrPostData['messages'][0]['text'];
 
-  		$callback = array(
-			'UserID' => $profil->userId,
-                        'replyToken' => $replyToken,	
-			'messages' => array(
-				array(
-					'type' => 'text',					
-					'text' => ''.$answer.''
-				     )
-				)
-				);
 
-		date_default_timezone_set("Asia/Bangkok");
 		$callback = array(
 			'UserID' => $profil->userId,
                         'replyToken' => $replyToken,	
