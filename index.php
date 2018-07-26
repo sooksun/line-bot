@@ -12,6 +12,7 @@ $channelSecret = '3163eae7704dfcf9894d608ca489bc32';//Your Channel Secret
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
+
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
 $strUrl = "https://api.line.me/v2/bot/message/reply";
@@ -41,7 +42,11 @@ if($message['type']=='sticker')
 					)
 					)
 				);						
-}else if($message['type']=='text') {
+}
+else
+
+if($message['type']=='text')
+{
 //เริ่มตัด
 $api_key="xC7mzpTf6-RWaaCVPjDwYxa3rwAtpvc-";
 $url = 'https://api.mlab.com/api/1/databases/tokapi/collections/conversation?apiKey='.$api_key.'';
@@ -69,5 +74,42 @@ $isData=sizeof($data);
     );
     $context = stream_context_create($opts);
     $returnValue = file_get_contents($url,false,$context);
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนครับ';
+    $answer = $arrPostData['messages'][0]['text'];
 
+  		$callback = array(
+			'UserID' => $profil->userId,
+                        'replyToken' => $replyToken,	
+			'messages' => array(
+				array(
+					'type' => 'text',					
+					'text' => ''.$answer.''
+				     )
+				)
+				);
+
+		date_default_timezone_set("Asia/Bangkok");
+		$callback = array(
+			'UserID' => $profil->userId,
+                        'replyToken' => $replyToken,	
+			'messages' => array(
+				array(
+					'type' => 'text',	
+					'text' => $profil->displayName."\nuserId=".$userId."\ngroupId".$groupId."\ngroupId".$_msg
+				     )
+				)
+				);
+		//$strname = ;
+		//$username = ereg_replace('[[:space:]]+', '', trim($profil->displayName));
+
+//สิ้นสุดตัด     $callback['messages'][0]['text']
+}
+$result =  json_encode($callback);
+file_put_contents('./reply.json',$result);
+$client->replyMessage($callback);
+
+file_get_contents("http://banpayapraischool.ac.th/cron/ins_linebot.php?msg=".$msg."&user_id=".$userId."&groupId=".$groupId);
 ?>
