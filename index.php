@@ -75,14 +75,77 @@ $isData=sizeof($data);
     $context = stream_context_create($opts);
     $returnValue = file_get_contents($url,false,$context);
 
+    switch (rand(1,20)) {
+    case 1:
+        $answer = 'เยี่ยม !';
+        break;
+    case 2:
+        $answer = 'น่าสนใจนะ';
+        break;
+    case 3:
+        $answer = 'เยี่ยมมาก';
+        break;
+    case 4:
+        $answer = 'สักครู่';
+        break;
+    case 5:
+        $answer = 'ยอดเลย';
+        break;
+   case 6:
+        $answer = 'ว้าว';
+        break;
+   case 7:
+        $answer = 'สุดยอด';
+        break;
+   case 8:
+        $answer = 'ว้าว';
+        break;
+  case 9:
+        $answer = 'เจ๋ง';
+        break;
+  case 10:
+        $answer = 'แจ๋วเลยครับ';
+        break;
+   case 11:
+        $answer = 'ฟินสุดๆ';
+        break;
+    case 12:
+        $answer = 'perfect !';
+        break;
+      case 13:
+        $answer = '55555..';
+        break;
+      case 14:
+        $answer = 'สวยงาม';
+        break;
+     case 15:
+       $answer = 'ที่หนึ่งเลย';
+        break;
+     case 16:
+        $answer = 'อย่างนี้ใช่เลย';
+        break;
+    case 17:
+        $answer = 'มาเรื่อยๆครับ';
+        break;
+    case 18:
+        $answer = 'ใจดีจัง';
+        break;
+    case 19:
+        $answer = 'แหล่มเลย !!';
+        break;
+    default:
+        $answer = 'เก่งจัง น่ารักสุดๆ';
+    }
 
+	
+	
 		$callback = array(
 			'UserID' => $profil->userId,
                         'replyToken' => $replyToken,	
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => $profil->displayName."\nuserId=".$userId."\ngroupId".$groupId."\ngroupId".$_msg
+					'text' => $answer.$profil->displayName
 				     )
 				)
 				);
