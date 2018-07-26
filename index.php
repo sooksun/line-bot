@@ -55,7 +55,7 @@ $data = json_decode($json);
 $isData=sizeof($data);
  
     $_userId=$userId;
-    $_userName=$profil->displayName,  
+    $_userName=$profil->displayName;  
     $_groupId=$groupId;
     $_msg=$_msg;
     //Post New Data
