@@ -55,13 +55,15 @@ $data = json_decode($json);
 $isData=sizeof($data);
  
     $_userId=$userId;
-	$_groupId=$groupId;
+    $_userName=$profil->displayName,  
+    $_groupId=$groupId;
     $_msg=$_msg;
     //Post New Data
     $newData = json_encode(
       array(
         'userId' => $_userId,
-		'groupId' => $_groupId,
+	'userName' => $_userName,      
+	'groupId' => $_groupId,
         'msg'=> $_msg
       )
     );
