@@ -113,7 +113,7 @@ $isData=sizeof($data);
         $answer = 'perfect !';
         break;
       case 13:
-        $answer = '55555..';
+        $answer = 'good job!';
         break;
       case 14:
         $answer = 'สวยงาม';
@@ -145,7 +145,7 @@ $isData=sizeof($data);
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => $answer.$profil->displayName
+					'text' => $answer.' @'.$profil->displayName
 				     )
 				)
 				);
