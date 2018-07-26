@@ -44,13 +44,6 @@ if($message['type']=='sticker')
 				);						
 }
 else
-//$ask_text=str_replace(" ", "%20", $mess_text);
-//$key = '0a7f12df-3ed0-4b46-985a-5d8fa72f0a1b'; //API SimSimi
-//$url = 'http://api.simsimi.com/request.p?key='.$key.'&lc=th&ft=1.0&text='.$ask_text;
-
-//$json_data = file_get_contents($url);
-//$url=json_decode($json_data,1);
-//$answer = $url['response'];
 
 if($message['type']=='text')
 {
@@ -61,13 +54,15 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/tokapi/collectio
 $data = json_decode($json);
 $isData=sizeof($data);
  
-    $_question=$userId;
-    $_answer=$_msg;
+    $_userId=$userId;
+	$_groupId=$groupId;
+    $_msg=$_msg;
     //Post New Data
     $newData = json_encode(
       array(
-        'question' => $_question,
-        'answer'=> $_answer
+        'userId' => $_userId,
+		'groupId' => $_groupId,
+        'msg'=> $_msg
       )
     );
     $opts = array(
