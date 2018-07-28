@@ -29,12 +29,6 @@ $message 	= $client->parseEvents()[0]['message'];
 $profil 	= $client->profil($userId);
 $mess_text 	= $message['text'];
 
-$response = $client->getProfile($userId);
-if ($response->isSucceeded()) {
-    $profile = $response->getJSONDecodedBody();
-    $_userName= $profile['displayName'];
-}
-
 if($message['type']=='sticker')
 {	
 	$callback = array(
@@ -61,6 +55,7 @@ $data = json_decode($json);
 $isData=sizeof($data);
  
     $_userId=$userId;
+    $_userName=$profil->displayName;  
     $_groupId=$groupId;
     $_msg=$_msg;
     //Post New Data
@@ -152,7 +147,7 @@ $isData=sizeof($data);
 			'messages' => array(
 				array(
 					'type' => 'text',	
-					'text' => $answer.' @'.$profil->displayName
+					'text' => $answer
 				     )
 				)
 				);
