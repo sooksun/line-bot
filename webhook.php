@@ -4,7 +4,8 @@ ob_start();
 $requestBody = file_get_contents('php://input'); 
 $json = json_decode($requestBody, true);
 
-$text = $json['result']['resolvedQuery'];
+//$text = $json['result']['resolvedQuery'];
+$text = "เสียงตอบจาก Fulfillments";
 $response = json_encode(array(
             "source" => "webhook",
             "speech" => $text,
