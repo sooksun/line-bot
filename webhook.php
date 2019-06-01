@@ -1,31 +1,17 @@
 <?php
-require 'get_enews.php';
+header("Content-Type: application/json");
+ob_start();
+$requestBody = file_get_contents('php://input'); 
+$json = json_decode($requestBody, true);
 
-function processMessage($input) {
-    $action = $input["result"]["action"];
-    switch($action){
+$text = $json['result']['resolvedQuery'];
+$response = json_encode(array(
+            "source" => "webhook",
+            "speech" => $text,
+            "displayText" => $text,
+            "contextOut" => array()
+        ));
 
-        case 'getNews':
-            $param = $input["result"]["parameters"]["number"];
-            getNews($param);
-            break;
-
-        default :
-            sendMessage(array(
-                "source" => "RMC",
-                "speech" => "I am not able to understand. what do you want ?",
-                "displayText" => "I am not able to understand. what do you want ?",
-                "contextOut" => array()
-            ));
-    }
-}
-function sendMessage($parameters) {
-    header('Content-Type: application/json');
-    $data = str_replace('\/','/',json_encode($parameters));
-    echo $data;
-}
-$input = json_decode(file_get_contents('php://input'), true);
-if (isset($input["result"]["action"])) {
-    processMessage($input);
-}
+ob_end_clean();
+echo $response;
 ?>
