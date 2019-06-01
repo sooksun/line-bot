@@ -1,30 +1,15 @@
 <?php
 
+include('conect_db.php');
 
-$curl = curl_init();
+date_default_timezone_set("Asia/Bangkok");
 
-curl_setopt_array($curl, array(
- CURLOPT_URL => “https://api.line.me/v2/bot/message/push",
- CURLOPT_RETURNTRANSFER => true,
- CURLOPT_ENCODING => “”,
- CURLOPT_MAXREDIRS => 10,
- CURLOPT_TIMEOUT => 30,
- CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
- CURLOPT_CUSTOMREQUEST => “POST”,
- CURLOPT_POSTFIELDS => “Oh my god!”,
- CURLOPT_HTTPHEADER => array(
- “authorization: Bearer Line_token”,
- “cache-control: no-cache”,
- “content-type: application/json”,
- “postman-token: 71e40b26–87b8–5f38–477c-9bbb4cbffa88”
- ),
-));
-}
-
-$response = curl_exec($curl);
-
-$err = curl_error($curl);
-
-curl_close($curl);
+$datef = date('Y-m-d');
+$json = file_get_contents('php://input');
+$request = json_decode($json, true);
+$queryText = $request["queryResult"]["queryText"];
+$userId = $request['originalDetectIntentRequest']['payload']['data']['source']['userId'];
+$query = "INSERT INTO line_log(user_id,text,date_time) VALUE ('$userId','$queryText',NOW())";
+$resource = mysql_query($query) or die ("error".mysql_error());
 
 ?>
