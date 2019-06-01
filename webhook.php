@@ -1,15 +1,31 @@
 <?php
+require 'get_enews.php';
 
-include('conect_db.php');
+function processMessage($input) {
+    $action = $input["result"]["action"];
+    switch($action){
 
-date_default_timezone_set("Asia/Bangkok");
+        case 'getNews':
+            $param = $input["result"]["parameters"]["number"];
+            getNews($param);
+            break;
 
-$datef = date('Y-m-d');
-$json = file_get_contents('php://input');
-$request = json_decode($json, true);
-$queryText = $request["queryResult"]["queryText"];
-$userId = $request['originalDetectIntentRequest']['payload']['data']['source']['userId'];
-$query = "INSERT INTO line_log(user_id,text,date_time) VALUE ('$userId','$queryText',NOW())";
-$resource = mysql_query($query) or die ("error".mysql_error());
-
+        default :
+            sendMessage(array(
+                "source" => "RMC",
+                "speech" => "I am not able to understand. what do you want ?",
+                "displayText" => "I am not able to understand. what do you want ?",
+                "contextOut" => array()
+            ));
+    }
+}
+function sendMessage($parameters) {
+    header('Content-Type: application/json');
+    $data = str_replace('\/','/',json_encode($parameters));
+    echo $data;
+}
+$input = json_decode(file_get_contents('php://input'), true);
+if (isset($input["result"]["action"])) {
+    processMessage($input);
+}
 ?>
